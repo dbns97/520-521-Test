@@ -1,0 +1,38 @@
+{
+  "parameter_set" : {
+    "name" : "pGlobal",
+    "description" : "",
+    "parameters" : [ {
+      "name" : "DatasetDir",
+      "description" : "",
+      "prompt" : "DatasetDir",
+      "type" : "path",
+      "value" : "/px-storage/baz_data/deploy_test_develop/datasets"
+    }, {
+      "name" : "SourceDir",
+      "description" : "",
+      "prompt" : "SourceDir",
+      "type" : "path",
+      "value" : "/px-storage/baz_data/deploy_test_develop/source"
+    }, {
+      "name" : "TargetDir",
+      "description" : "",
+      "prompt" : "TargetDir",
+      "type" : "path",
+      "value" : "/px-storage/baz_data/deploy_test_develop/target"
+    } ],
+    "value_sets" : [ {
+      "values" : [ {
+        "name" : "DatasetDir",
+        "value" : "/px-storage/baz_data/deploy_test_develop/datasets"
+      }, {
+        "name" : "SourceDir",
+        "value" : "/px-storage/baz_data/deploy_test_develop/source"
+      }, {
+        "name" : "TargetDir",
+        "value" : "/px-storage/baz_data/deploy_test_develop/target"
+      } ],
+      "name" : "develop"
+    } ]
+  }
+}

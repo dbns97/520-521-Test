@@ -1,0 +1,36 @@
+{
+  "metadata" : {
+    "name" : "Transform.DataStage job",
+    "asset_id" : "d6b4f8a3-d9c2-4767-9909-40541bc4c1e5",
+    "owner_id" : "1000330999",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "c71bb5c4-1641-4998-af32-a7e89877ce55",
+      "schedule_id" : "",
+      "project_name" : "520Test",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "parameter_sets" : [ {
+        "ref" : "49a4ee25-6840-46e7-b64c-b2ee2974ca76",
+        "name" : "pGlobal"
+      } ],
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "Transform"
+    }
+  }
+}

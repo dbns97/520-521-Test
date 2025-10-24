@@ -1,0 +1,36 @@
+{
+  "metadata" : {
+    "name" : "Load.DataStage job",
+    "asset_id" : "04e4a6f1-1ec4-4f4c-9049-bc70d8558f7c",
+    "owner_id" : "1000330999",
+    "version" : 0
+  },
+  "entity" : {
+    "job" : {
+      "asset_ref" : "5a26a4e4-b683-4645-99b3-a192ca558410",
+      "schedule_id" : "",
+      "project_name" : "520Test",
+      "configuration" : {
+        "env_type" : "",
+        "flow_limits" : {
+          "warn_limit" : 100
+        },
+        "env_variables" : [ ],
+        "runPriorityQueue" : "Medium"
+      },
+      "last_run_time" : "deprecated field",
+      "asset_ref_type" : "data_intg_flow",
+      "parameter_sets" : [ {
+        "ref" : "49a4ee25-6840-46e7-b64c-b2ee2974ca76",
+        "name" : "pGlobal"
+      } ],
+      "last_run_status" : "deprecated field",
+      "last_run_initiator" : "deprecated field",
+      "schedule_creator_id" : "",
+      "enable_notifications" : true,
+      "future_scheduled_runs" : [ ],
+      "last_run_status_timestamp" : 0,
+      "flow_name" : "Load"
+    }
+  }
+}

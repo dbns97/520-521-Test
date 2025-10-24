@@ -1,0 +1,497 @@
+{
+  "primary_pipeline" : "cf51245a-fe38-4b62-b829-6387a809012d",
+  "pipelines" : [ {
+    "nodes" : [ {
+      "outputs" : [ {
+        "id" : "6ad1b37d-9bc9-4da2-96fb-3167c0c35f9d",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "da4e3f15-beef-4a8f-9cab-a1ab649075d4"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "85860e32-6844-4cc1-a9dd-c6d4e15bfd17",
+        "parameters" : {
+          "missingcolmode" : " ",
+          "buf_free_run" : 50,
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "dataset" : "#pGlobal.DatasetDir#/Extract.ds"
+        }
+      } ],
+      "op" : "PxDataSet",
+      "id" : "91e81a96-bf3b-4ba6-869c-0ae2891b5f46",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 79.2,
+          "label" : "dsExtract",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "output_count" : 1,
+        "input_count" : 0,
+        "allow_column_mapping" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "229304e7-0e46-40f0-a485-a4cd6049347a",
+        "app_data" : {
+          "datastage" : {
+            "is_source_of_link" : "2ee7e272-1dcc-4062-9fa1-e93d34e8cbe5"
+          },
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 2147483647
+            }
+          },
+          "additionalProperties" : {
+            "enableAcp" : true
+          }
+        },
+        "schema_ref" : "e3fb6916-f751-4482-80eb-ca0b56539d2e",
+        "parameters" : {
+          "Reject" : false,
+          "outputName" : "outData",
+          "RowLimit" : 0,
+          "valueDerivation" : [ {
+            "parsedExpression" : "\"Hello \": inData.LAST_NAME",
+            "columnName" : "LAST_NAME"
+          }, {
+            "parsedExpression" : "Floor(inData.BALANCE)",
+            "columnName" : "DOLLARS"
+          }, {
+            "parsedExpression" : "(inData.BALANCE - Floor(inData.BALANCE)) * 1000",
+            "columnName" : "CENTS"
+          } ],
+          "buf_free_run" : 50,
+          "buf_mode" : "default",
+          "queue_upper_size" : 0,
+          "max_mem_buf_size" : 3145728,
+          "disk_write_inc" : 1048576,
+          "runtime_column_propagation" : false
+        }
+      } ],
+      "op" : "CTransformerStage",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "91e81a96-bf3b-4ba6-869c-0ae2891b5f46",
+          "type_attr" : "PRIMARY",
+          "id" : "da4e3f15-beef-4a8f-9cab-a1ab649075d4",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_single_line" : true,
+                "label_align" : "center",
+                "tooltip" : "inData",
+                "x_pos" : 0,
+                "label" : "inData",
+                "label_allow_return_key" : "save",
+                "width" : 94,
+                "label_editable" : true,
+                "id" : "dec-8",
+                "position" : "middle",
+                "y_pos" : -20,
+                "height" : 20
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "inData",
+          "port_id_ref" : "6ad1b37d-9bc9-4da2-96fb-3167c0c35f9d"
+        } ],
+        "id" : "51368c2b-6fd2-409b-b11e-d968ea9c4de6",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 1,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "85860e32-6844-4cc1-a9dd-c6d4e15bfd17",
+        "parameters" : {
+          "keyColsPart" : [ ],
+          "perform_sort" : false,
+          "part_coll" : "part_type",
+          "runtime_column_propagation" : 0
+        }
+      } ],
+      "id" : "b13e3cc2-3397-480a-b920-bb478ea4daaf",
+      "type" : "execution_node",
+      "app_data" : {
+        "datastage" : {
+          "inputs_order" : "51368c2b-6fd2-409b-b11e-d968ea9c4de6",
+          "outputs_order" : "229304e7-0e46-40f0-a485-a4cd6049347a"
+        },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/CTransformerStage.svg",
+          "x_pos" : 269.28,
+          "label" : "txTransform",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "MaxLoopIterations" : 0,
+        "output_count" : 1,
+        "BlockSizeSelectedType" : "systemSelected",
+        "StageVariables" : [ ],
+        "input_count" : 1,
+        "Triggers" : [ ],
+        "LoopVariables" : [ ],
+        "SKKeySourceType" : "file",
+        "runtime_column_propagation" : false
+      }
+    }, {
+      "outputs" : [ {
+        "id" : "",
+        "app_data" : {
+          "ui_data" : {
+            "label" : "outPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        }
+      } ],
+      "op" : "PxDataSet",
+      "inputs" : [ {
+        "links" : [ {
+          "node_id_ref" : "b13e3cc2-3397-480a-b920-bb478ea4daaf",
+          "type_attr" : "PRIMARY",
+          "id" : "2ee7e272-1dcc-4062-9fa1-e93d34e8cbe5",
+          "app_data" : {
+            "datastage" : { },
+            "ui_data" : {
+              "decorations" : [ {
+                "image" : "/data-intg/flows/graphics/flows/link-output-handle--default-selected.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 0,
+                "x_pos" : -10,
+                "id" : "dec-3",
+                "position" : "source",
+                "y_pos" : -10,
+                "class_name" : "linkStartImage"
+              }, {
+                "image" : "/data-intg/flows/graphics/flows/link-marking--auto-partitioning.svg",
+                "temporary" : false,
+                "outline" : false,
+                "distance" : 2,
+                "width" : 50,
+                "tooltip" : "Auto-partition",
+                "x_pos" : -15,
+                "id" : "dec-6R",
+                "position" : "middle",
+                "y_pos" : 4,
+                "height" : 50
+              }, {
+                "temporary" : false,
+                "label_single_line" : true,
+                "label_align" : "center",
+                "tooltip" : "outData",
+                "x_pos" : 0,
+                "label" : "outData",
+                "label_allow_return_key" : "save",
+                "width" : 94,
+                "label_editable" : true,
+                "id" : "dec-8",
+                "position" : "middle",
+                "y_pos" : -20,
+                "height" : 20
+              } ],
+              "class_name" : "linkStyle__runMetricsLinkDefaultStyle___ixW31"
+            }
+          },
+          "link_name" : "outData",
+          "port_id_ref" : "229304e7-0e46-40f0-a485-a4cd6049347a"
+        } ],
+        "id" : "602508e8-5e51-480c-8577-32e2426bb64f",
+        "app_data" : {
+          "datastage" : { },
+          "ui_data" : {
+            "label" : "inPort",
+            "cardinality" : {
+              "min" : 0,
+              "max" : 1
+            }
+          }
+        },
+        "schema_ref" : "e3fb6916-f751-4482-80eb-ca0b56539d2e",
+        "parameters" : {
+          "datasetmode" : ">| [ds",
+          "dataAssetName" : "#pGlobal.DatasetDir#/Transform.ds",
+          "part_coll" : "part_type",
+          "dataset" : "#pGlobal.DatasetDir#/Transform.ds",
+          "runtime_column_propagation" : 0,
+          "registerDataAsset" : false
+        }
+      } ],
+      "id" : "5cc3e254-27c2-4f92-a417-4254faa3895e",
+      "type" : "binding",
+      "app_data" : {
+        "datastage" : { },
+        "ui_data" : {
+          "image" : "/data-intg/flows/graphics/palette/PxDataSet.svg",
+          "x_pos" : 459.36,
+          "label" : "dsTransform",
+          "y_pos" : 95.03999999999999
+        }
+      },
+      "parameters" : {
+        "output_count" : 0,
+        "input_count" : 1,
+        "allow_column_mapping" : false
+      }
+    } ],
+    "description" : "",
+    "id" : "cf51245a-fe38-4b62-b829-6387a809012d",
+    "app_data" : {
+      "datastage" : {
+        "nls_map_name" : "UTF-8",
+        "runtime_column_propagation" : "false",
+        "nls_locale" : "OFF"
+      },
+      "ui_data" : {
+        "comments" : [ ]
+      }
+    },
+    "runtime_ref" : "pxOsh"
+  } ],
+  "runtimes" : [ {
+    "name" : "pxOsh",
+    "id" : "pxOsh"
+  } ],
+  "external_paramsets" : [ {
+    "ref" : "49a4ee25-6840-46e7-b64c-b2ee2974ca76",
+    "project_ref" : "333806de-0b5e-402a-b852-8dfd28a7c852",
+    "name" : "pGlobal"
+  } ],
+  "json_schema" : "https://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "schemas" : [ {
+    "id" : "85860e32-6844-4cc1-a9dd-c6d4e15bfd17",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FIRST_NAME",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "LAST_NAME",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 2,
+        "decimal_precision" : 8,
+        "max_length" : 8,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "BALANCE",
+      "type" : "double",
+      "app_data" : {
+        "odbc_type" : "DECIMAL",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "DECIMAL"
+      }
+    } ]
+  }, {
+    "id" : "e3fb6916-f751-4482-80eb-ca0b56539d2e",
+    "fields" : [ {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "source_field_id" : "inData.FIRST_NAME",
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "FIRST_NAME",
+      "type" : "string",
+      "app_data" : {
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 0,
+        "max_length" : 0,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "LAST_NAME",
+      "type" : "string",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "VARCHAR",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "STRING"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 6,
+        "max_length" : 6,
+        "is_signed" : false
+      },
+      "nullable" : false,
+      "name" : "DOLLARS",
+      "type" : "integer",
+      "app_data" : {
+        "time_scale" : 0,
+        "odbc_type" : "INTEGER",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    }, {
+      "metadata" : {
+        "item_index" : 0,
+        "is_key" : false,
+        "min_length" : 0,
+        "decimal_scale" : 0,
+        "decimal_precision" : 6,
+        "max_length" : 6,
+        "is_signed" : true
+      },
+      "nullable" : false,
+      "name" : "CENTS",
+      "type" : "integer",
+      "app_data" : {
+        "odbc_type" : "INTEGER",
+        "array_handling" : 0,
+        "is_unicode_string" : false,
+        "type_code" : "INT32"
+      }
+    } ]
+  } ],
+  "doc_type" : "pipeline",
+  "id" : "0623e1d1-cd1c-46a7-877a-23f272647ebd",
+  "app_data" : {
+    "datastage" : {
+      "timestamp_format" : "%yyyy-%mm-%dd %hh:%nn:%ss",
+      "decimal_separator" : ".",
+      "flowRunPriorityQueue" : "Medium",
+      "time_format" : "%hh:%nn:%ss",
+      "external_message_handlers" : [ ],
+      "date_format" : "%yyyy-%mm-%dd",
+      "message_handlers" : [ ],
+      "version" : "3.0.5"
+    },
+    "additionalProperties" : {
+      "transInputLinkMapper" : {
+        "b13e3cc2-3397-480a-b920-bb478ea4daaf" : "inData"
+      },
+      "ELTDropdown" : {
+        "id" : "nesting",
+        "label" : "Generate nested SQL",
+        "value" : "NESTED_QUERY"
+      },
+      "saveChangeFrequency" : "apply_changes_temporarily",
+      "disableParamsCacheOnFlow" : false,
+      "rcpLinkList" : [ ],
+      "globalAcp" : true,
+      "enableRCP" : false,
+      "isNewTransActive" : false,
+      "isDefineParameterToggled" : true,
+      "enableSchemaLessDesign" : false,
+      "runMode" : "ETL"
+    }
+  },
+  "version" : "3.0",
+  "parameters" : {
+    "local_parameters" : [ {
+      "subtype" : "",
+      "valid_values" : [ "Disabled", "Test", "Intercept" ],
+      "name" : "$DM_ENABLE_UNIT_TESTING",
+      "type" : "enum",
+      "prompt" : "Unit Testing Configuration",
+      "value" : "Disabled"
+    } ]
+  }
+}
